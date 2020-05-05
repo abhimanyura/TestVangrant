@@ -2,6 +2,7 @@ package testcase;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
@@ -28,8 +29,7 @@ public class OneTimeSetup {
 	public void oneTimeSetUp() 
 	{
 		extentReports = new ExtentReports(seleniumHelper.extentReportLocation("Automation suite Report"));
-		ExtentTest logger = extentReports.startTest("One time set up");
-		extentReports.endTest(logger);
+		
 	}
 
 	@BeforeTest(description = "Setting up the browser and logging in")
@@ -45,12 +45,15 @@ public class OneTimeSetup {
 	}
 
 
-	@AfterSuite(alwaysRun = true, description = "TearUp")
+	@AfterTest(alwaysRun = true, description = "TearUp")
 	public void tearUp() {
-		ExtentTest logger = extentReports.startTest("Tear up");
+		
 		driver.quit();
-		extentReports.endTest(logger);
-		extentReports.flush();
 
+	}
+	@AfterSuite(alwaysRun = true)
+	public void flushReport()
+	{
+		extentReports.flush();
 	}
 }
