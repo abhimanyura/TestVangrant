@@ -3,10 +3,7 @@ import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.commons.io.FileUtils;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -302,8 +299,6 @@ public class SeleniumHelper {
 		{
 			WebElement ele = driver.findElement(elementLocator);
 			Select sel = new Select(ele);
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", ele);
 			try {
 				sel.selectByVisibleText(value);
 				logInfo(logger, "The given text " + value + "selected From dropdown");
@@ -664,7 +659,22 @@ public class SeleniumHelper {
 			System.out.println(e.getMessage());
 		}
 	}
+	 /**
+     * This method is used for waiting for few milliseconds
+     * @param milliSeconds
+     */
+    public void waitForMilliSec(int milliSeconds) {
+        try {
+            Thread.sleep(milliSeconds);
+        } catch (Exception e) {
 
+        }
+    }
+    
+    public void scrollVertically(WebDriver driver)
+    {
+    	((JavascriptExecutor) driver).executeScript("scroll(0,450);");
+    }
 	public static void main(String[] args) {
 
 	}
