@@ -16,6 +16,14 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     mavenCentral()
 }
+test {
+	useTestNG() {
+		
+		dependsOn compileJava
+		useDefaultListeners = true
+		suites "src/test/resources/regressionSuit.xml"
+	}
+}
 
 dependencies {
    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.141.59'
@@ -29,3 +37,4 @@ dependencies {
 	compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.6'
 	compile group: 'commons-configuration', name: 'commons-configuration', version: '1.10'
 }
+defaultTasks 'build','test'
