@@ -16,7 +16,7 @@ You can trigger the project by going to src/test/resource folder and execute the
 
 To change the broswer name please go to src/main/resource and update configuration.properties property broswername
 
-
+Reports implemented is extent report and resports can be viewed inside reports folder
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
