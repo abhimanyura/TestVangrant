@@ -36,7 +36,7 @@ public class OneTimeSetup {
 	public void browserSetup()
 	{
 		ExtentTest logger = extentReports.startTest("Setting up browser and login ");
-		driver = loginhelper.openBrowser("Chrome"); 
+		driver = loginhelper.openBrowser(propertyFileUtils.getPropertyValue("Configuration", "browsername")); 
 		driver.get(propertyFileUtils.getPropertyValue("Configuration", "URI"));
 		seleniumHelper.logInfo(logger, "Browser is launched", driver);
 		driver.manage().window().maximize();
